@@ -1,5 +1,6 @@
-local plr = game.Players.LocalPlayer
+
 local screenGui = Instance.new("ScreenGui")
+local plr = game.Players.LocalPlayer
 screenGui.Parent = plr.PlayerGui
 screenGui.ResetOnSpawn = false
 local frame = Instance.new("Frame")
