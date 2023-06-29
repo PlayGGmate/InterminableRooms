@@ -96,15 +96,15 @@ function NewGui()
 		elseif workspace:FindFirstChild("no more E entity spawn").Enabled == false then
 			section = "V"
 		end
-		if section = "A" then
+		if section == "A" then
 			doorNum += 1
 			label2.Text = "A-"..doorNum
 		end
-		if section = "E" then
+		if section == "E" then
 			doorNum += 1
 			label2.Text = "E-"..doorNum
 		end
-		if section = "V" then
+		if section == "V" then
 			doorNum += 1
 			label2.Text = "V-"..doorNum
 		end
