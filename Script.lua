@@ -1,24 +1,25 @@
-
+local plr = game.Players.LocalPlayer
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = plr.PlayerGui
+screenGui.ResetOnSpawn = false
+local frame = Instance.new("Frame")
+frame.Parent = screenGui
+frame.Size = UDim2.new(0, 400, 0, 400)
+frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.Position = UDim2.new(0, 0, 0)
+frame.Visible = true
+local label2 = Instance.new("TextLabel", frame)
+label2.Text = ""
+label2.Size = UDim2.new(0.2, 0, 0.1, 0)
+label2.Position = UDim2.new(0.8, 0, .8, 0)
+label2.BackgroundColor3 = Color3.new(0.47451, 0.0156863, 0)
+label2.TextScaled = true
+label2.TextWrapped = true
 local section = "A"
 local doorNum = 1
 function NewGui()
-	local plr = game.Players.LocalPlayer
-	local screenGui = Instance.new("ScreenGui")
-	screenGui.Parent = plr.PlayerGui
-	screenGui.ResetOnSpawn = false
-	local frame = Instance.new("Frame")
-	frame.Parent = screenGui
-	frame.Size = UDim2.new(0, 400, 0, 400)
-	frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-	frame.Position = UDim2.new(0, 0, 0)
-	frame.Visible = true
-	local label2 = Instance.new("TextLabel", frame)
-	label2.Text = ""
-	label2.Size = UDim2.new(0.2, 0, 0.1, 0)
-	label2.Position = UDim2.new(0.8, 0, .8, 0)
-	label2.BackgroundColor3 = Color3.new(0.47451, 0.0156863, 0)
-	label2.TextScaled = true
-	label2.TextWrapped = true
+	
+	
 	local UICORNER = Instance.new("UICorner", frame)
 	local Title = Instance.new("TextLabel", frame)
 	Title.Text = "Interminable Rooms Hub"
