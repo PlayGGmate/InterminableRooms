@@ -1,17 +1,25 @@
-
 local plr = game.Players.LocalPlayer
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = plr.PlayerGui
+screenGui.ResetOnSpawn = false
+local frame = Instance.new("Frame")
+frame.Parent = screenGui
+frame.Size = UDim2.new(0, 400, 0, 400)
+frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.Position = UDim2.new(0, 0, 0)
+frame.Visible = true
+local label2 = Instance.new("TextLabel", frame)
+label2.Text = ""
+label2.Size = UDim2.new(0.2, 0, 0.1, 0)
+label2.Position = UDim2.new(0.8, 0, .8, 0)
+label2.BackgroundColor3 = Color3.new(0.47451, 0.0156863, 0)
+label2.TextScaled = true
+label2.TextWrapped = true
 local section = nil
 local doorNum = 1
 function NewGui()
-	local screenGui = Instance.new("ScreenGui")
-	screenGui.Parent = plr.PlayerGui
-	screenGui.ResetOnSpawn = false
-	local frame = Instance.new("Frame")
-	frame.Parent = screenGui
-	frame.Size = UDim2.new(0, 400, 0, 400)
-	frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-	frame.Position = UDim2.new(0, 0, 0)
-	frame.Visible = true
+	
+	
 	local UICORNER = Instance.new("UICorner", frame)
 	local Title = Instance.new("TextLabel", frame)
 	Title.Text = "Interminable Rooms Hub"
@@ -61,13 +69,7 @@ function NewGui()
 	label.BackgroundColor3 = Color3.new(0.47451, 0.0156863, 0)
 	label.TextScaled = true
 	label.TextWrapped = true
-	local label2 = Instance.new("TextLabel", frame)
-	label2.Text = "A-"
-	label2.Size = UDim2.new(0.2, 0, 0.1, 0)
-	label2.Position = UDim2.new(0.8, 0, .8, 0)
-	label2.BackgroundColor3 = Color3.new(0.47451, 0.0156863, 0)
-	label2.TextScaled = true
-	label2.TextWrapped = true
+
 	local UICorner = Instance.new("UICorner", walkspeed)
 	local UICorner2 = Instance.new("UICorner", walkspeedbutton)
 	local UICorner3 = Instance.new("UICorner", walkspeedbutton2)
@@ -129,7 +131,7 @@ function NewGui()
 	local entityFolder = workspace:FindFirstChild("Entities")
 	entityFolder.ChildAdded:Connect(function(entity)
 		label.Text = entity.Name.." has spawned!"
-		task.wait(3)
+		task.wait(5)
 		label.Text = "Entity Notifier (Can't Notify A-150)"
 	end)
 	
@@ -140,3 +142,17 @@ function NewGui()
 end
 
 NewGui()
+
+while wait() do
+	doorNum += 1
+
+	if workspace:FindFirstChild("no more entity spawn").Enabled == true then
+		section = "A"
+	elseif workspace:FindFirstChild("no more entity spawn").Enabled == false then
+		section = "E"
+	elseif workspace:FindFirstChild("no more E entity spawn").Enabled == false then
+		section = "V"
+	end
+
+	label2.Text = section.."-"..doorNum
+end
