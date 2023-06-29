@@ -1,5 +1,7 @@
-local plr = game.Players.LocalPlayer
 
+local plr = game.Players.LocalPlayer
+local section = nil
+local doorNum = 1
 function NewGui()
 	local screenGui = Instance.new("ScreenGui")
 	screenGui.Parent = plr.PlayerGui
@@ -59,10 +61,18 @@ function NewGui()
 	label.BackgroundColor3 = Color3.new(0.47451, 0.0156863, 0)
 	label.TextScaled = true
 	label.TextWrapped = true
+	local label2 = Instance.new("TextLabel", frame)
+	label2.Text = "A-"
+	label2.Size = UDim2.new(0.2, 0, 0.1, 0)
+	label2.Position = UDim2.new(0.8, 0, .8, 0)
+	label2.BackgroundColor3 = Color3.new(0.47451, 0.0156863, 0)
+	label2.TextScaled = true
+	label2.TextWrapped = true
 	local UICorner = Instance.new("UICorner", walkspeed)
 	local UICorner2 = Instance.new("UICorner", walkspeedbutton)
 	local UICorner3 = Instance.new("UICorner", walkspeedbutton2)
 	local UICorner4 = Instance.new("UICorner", label)
+	local UICorner5 = Instance.new("UICorner", label2)
 	local function setWalkSpeed()
 		local num = tonumber(walkspeed.Text)
 		local char = plr.Character
@@ -72,6 +82,23 @@ function NewGui()
 			hum.WalkSpeed = num
 		end
 	end
+	
+	local roomsFolder = workspace:FindFirstChild("Rooms")
+	
+	roomsFolder.ChildAdded:Connect(function(room)
+		doorNum += 1
+	
+		if workspace:FindFirstChild("no more entity spawn").Enabled == true then
+			section = "A"
+		elseif workspace:FindFirstChild("no more entity spawn").Enabled == false then
+			section = "E"
+		elseif workspace:FindFirstChild("no more E entity spawn").Enabled == false then
+			section = "V"
+		end
+		
+		label2.Text = section.."-"..doorNum
+		
+	end)
 	
 	local function teleportToLatestRoom()
 		local RoomsFolder = workspace:FindFirstChild("Rooms")
@@ -102,7 +129,7 @@ function NewGui()
 	local entityFolder = workspace:FindFirstChild("Entities")
 	entityFolder.ChildAdded:Connect(function(entity)
 		label.Text = entity.Name.." has spawned!"
-		task.wait(5)
+		task.wait(3)
 		label.Text = "Entity Notifier (Can't Notify A-150)"
 	end)
 	
