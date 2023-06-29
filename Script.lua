@@ -1,8 +1,8 @@
-local plr = game.Players.LocalPlayer
 
 local section = "A"
 local doorNum = 1
 function NewGui()
+	local plr = game.Players.LocalPlayer
 	local screenGui = Instance.new("ScreenGui")
 	screenGui.Parent = plr.PlayerGui
 	screenGui.ResetOnSpawn = false
