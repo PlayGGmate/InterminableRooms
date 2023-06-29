@@ -1,8 +1,11 @@
+
+
 local plr = game.Players.LocalPlayer
 
 function NewGui()
 	local screenGui = Instance.new("ScreenGui")
 	screenGui.Parent = plr.PlayerGui
+	screenGui.ResetOnSpawn = false
 	local frame = Instance.new("Frame")
 	frame.Parent = screenGui
 	frame.Size = UDim2.new(0, 400, 0, 400)
@@ -92,6 +95,7 @@ function NewGui()
 	
 	CloseButton.MouseButton1Click:Connect(close)
 	walkspeedbutton.MouseButton1Click:Connect(setWalkSpeed)
+	walkspeedbutton2.MouseButton1Click:Connect(teleportToLatestRoom)
 end
 
 NewGui()
