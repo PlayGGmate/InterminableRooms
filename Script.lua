@@ -88,8 +88,18 @@ function NewGui()
 	local roomsFolder = workspace:FindFirstChild("Rooms")
 	
 	roomsFolder.ChildAdded:Connect(function(room)
-		doorNum += 1
-		label2.Text = section.."-"..doorNum
+		if section = "A" then
+			doorNum += 1
+			label2.Text = "A-"..doorNum
+		end
+		if section = "E" then
+			doorNum += 1
+			label2.Text = "E-"..doorNum
+		end
+		if section = "V" then
+			doorNum += 1
+			label2.Text = "V-"..doorNum
+		end
 	end)
 	
 	local function teleportToLatestRoom()
