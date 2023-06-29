@@ -1,5 +1,3 @@
-
-
 local plr = game.Players.LocalPlayer
 
 function NewGui()
@@ -54,9 +52,17 @@ function NewGui()
 	walkspeedbutton2.BackgroundColor3 = Color3.new(1, 0, 0)
 	walkspeedbutton2.TextScaled = true
 	walkspeedbutton2.TextWrapped = true
+	local label = Instance.new("TextLabel", screenGui)
+	label.Text = "Entity Notifier (Can't Notify A-150)"
+	label.Size = UDim2.new(0.2, 0, 0.1, 0)
+	label.Position = UDim2.new(0.8, 0, .8, 0)
+	label.BackgroundColor3 = Color3.new(0.47451, 0.0156863, 0)
+	label.TextScaled = true
+	label.TextWrapped = true
 	local UICorner = Instance.new("UICorner", walkspeed)
 	local UICorner2 = Instance.new("UICorner", walkspeedbutton)
 	local UICorner3 = Instance.new("UICorner", walkspeedbutton2)
+	local UICorner4 = Instance.new("UICorner", label)
 	local function setWalkSpeed()
 		local num = tonumber(walkspeed.Text)
 		local char = plr.Character
@@ -81,7 +87,6 @@ function NewGui()
 					end
 					
 				end
-				wait(0.1)
 			end
 		end
 	end
@@ -93,6 +98,14 @@ function NewGui()
 	local function OpenGui()
 		frame.Visible=true
 	end
+	
+	local entityFolder = workspace:FindFirstChild("Entities")
+	entityFolder.ChildAdded:Connect(function(entity)
+		label.Text = entity.Name.." has spawned!"
+		task.wait(5)
+		label.Text = "Entity Notifier (Can't Notify A-150)"
+	end)
+	
 	
 	CloseButton.MouseButton1Click:Connect(close)
 	walkspeedbutton.MouseButton1Click:Connect(setWalkSpeed)
