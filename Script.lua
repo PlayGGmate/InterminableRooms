@@ -89,17 +89,6 @@ function NewGui()
 	
 	roomsFolder.ChildAdded:Connect(function(room)
 		doorNum += 1
-	
-		if workspace:FindFirstChild("no more entity spawn").Enabled == true then
-			section = "A"
-		elseif workspace:FindFirstChild("no more entity spawn").Enabled == false then
-			section = "E"
-		elseif workspace:FindFirstChild("no more E entity spawn").Enabled == false then
-			section = "V"
-		end
-		
-		label2.Text = section.."-"..doorNum
-		
 	end)
 	
 	local function teleportToLatestRoom()
@@ -116,6 +105,7 @@ function NewGui()
 					end
 					
 				end
+				wait(0.1)
 			end
 		end
 	end
@@ -144,7 +134,6 @@ end
 NewGui()
 
 while wait() do
-	doorNum += 1
 
 	if workspace:FindFirstChild("no more entity spawn").Enabled == true then
 		section = "A"
