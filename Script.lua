@@ -88,6 +88,13 @@ function NewGui()
 	local roomsFolder = workspace:FindFirstChild("Rooms")
 	
 	roomsFolder.ChildAdded:Connect(function(room)
+		if workspace:FindFirstChild("no more entity spawn").Enabled == true then
+			section = "A"
+		elseif workspace:FindFirstChild("no more entity spawn").Enabled == false then
+			section = "E"
+		elseif workspace:FindFirstChild("no more E entity spawn").Enabled == false then
+			section = "V"
+		end
 		if section = "A" then
 			doorNum += 1
 			label2.Text = "A-"..doorNum
@@ -100,13 +107,7 @@ function NewGui()
 			doorNum += 1
 			label2.Text = "V-"..doorNum
 		end
-		if workspace:FindFirstChild("no more entity spawn").Enabled == true then
-			section = "A"
-		elseif workspace:FindFirstChild("no more entity spawn").Enabled == false then
-			section = "E"
-		elseif workspace:FindFirstChild("no more E entity spawn").Enabled == false then
-			section = "V"
-		end
+		
 
 	end)
 	
