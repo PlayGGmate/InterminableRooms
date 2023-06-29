@@ -100,6 +100,14 @@ function NewGui()
 			doorNum += 1
 			label2.Text = "V-"..doorNum
 		end
+		if workspace:FindFirstChild("no more entity spawn").Enabled == true then
+			section = "A"
+		elseif workspace:FindFirstChild("no more entity spawn").Enabled == false then
+			section = "E"
+		elseif workspace:FindFirstChild("no more E entity spawn").Enabled == false then
+			section = "V"
+		end
+
 	end)
 	
 	local function teleportToLatestRoom()
@@ -144,15 +152,3 @@ end
 
 NewGui()
 
-while wait() do
-
-	if workspace:FindFirstChild("no more entity spawn").Enabled == true then
-		section = "A"
-	elseif workspace:FindFirstChild("no more entity spawn").Enabled == false then
-		section = "E"
-	elseif workspace:FindFirstChild("no more E entity spawn").Enabled == false then
-		section = "V"
-	end
-
-	
-end
