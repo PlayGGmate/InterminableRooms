@@ -89,6 +89,7 @@ function NewGui()
 	
 	roomsFolder.ChildAdded:Connect(function(room)
 		doorNum += 1
+		label2.Text = section.."-"..doorNum
 	end)
 	
 	local function teleportToLatestRoom()
@@ -143,5 +144,5 @@ while wait() do
 		section = "V"
 	end
 
-	label2.Text = section.."-"..doorNum
+	
 end
